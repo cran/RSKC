@@ -127,7 +127,7 @@ SEXP RSKC_trimkmeans(SEXP data_,
   // double optdisttom[n];
   
   // The initialization of oldclass0
-  for (in =0; in <n; in++) oldclass0[in]=R_PosInf;
+  for (in =0; in <n; in++) oldclass0[in]=-30;
   GetRNGstate();
 
 
@@ -384,7 +384,7 @@ SEXP RSKC_trimkmeans_missing(SEXP data_,
   GetRNGstate();
 
   // The initialization of oldclass0
-  for (in =0; in <n; in++) oldclass0[in]=R_PosInf;
+  for (in =0; in <n; in++) oldclass0[in]=-30;
 
   // sum(Ws) does not change in this code, so we compute it at first
   double Wsum=0;

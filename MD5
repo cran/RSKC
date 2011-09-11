@@ -1,4 +1,4 @@
-42bda6cb21004557b5b353ec09c36cee *DESCRIPTION
+889d35ecfff620aa2bbfd7289e303766 *DESCRIPTION
 945ba68389dcc1a36cb66c84ad2c3cf1 *NAMESPACE
 88165b7cbca2533e4fc0bf72f89b79fa *R/CER.R
 54020dd3df0028574c811b77e484225e *R/Clest-base.R
@@ -27,4 +27,4 @@ c9838d550bd7d8a3c51d88ed665ee444 *man/RSKC-internal.Rd
 421012f8da74a9d7d5eec17340809949 *man/mfeat.Rd
 c245bffaeef2c8f10a8695f68df1d4b7 *man/optdigit.Rd
 8ae5e846eedb223782812aaf78120ad4 *man/revisedsil.Rd
-92bd055fbd2b0370be77976c1cc04729 *src/RSKC_trimkmeans.c
+a4ee0c9649fda2adf0cf19f1fbe4f1e6 *src/RSKC_trimkmeans.c
