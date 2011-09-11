@@ -11,9 +11,9 @@ The following clustering algorithm can be used: \emph{K}-means, trimmed \emph{K}
 }
 
 \usage{
-Clest(d, maxK, alpha, B = 10, B0 = 20, nstart = 100, 
+Clest(d, maxK, alpha, B = 15, B0 = 5, nstart = 1000, 
 
-      L1 = 12, beta = 0.1, pca = TRUE, silent=FALSE)
+      L1 = 6, beta = 0.1, pca = TRUE, silent=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

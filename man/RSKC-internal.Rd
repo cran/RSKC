@@ -5,9 +5,9 @@
 \alias{summary.rskc}
 \description{Internal RSKC functions}
 \usage{
-print.rskc(x,...)
-summary.rskc(object,...)
-print.summary.rskc(x,...)
+\method{print}{rskc}(x,...)
+\method{summary}{rskc}(object,...)
+\method{print.summary}{rskc}(x,...)
 }
 \author{Yumi Kondo <y.kondo@stat.ubc.ca>}
 \keyword{internal}

@@ -1,3 +1,4 @@
- .onLoad <- function(lib,pkg){
+ .onLoad <- function(lib,pkg)
+{
   library.dynam("RSKC",pkg,lib)
 }

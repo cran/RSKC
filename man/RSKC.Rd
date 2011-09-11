@@ -1,5 +1,7 @@
 \name{RSKC}
 \alias{RSKC}
+\alias{RSKC.trimkmeans}
+\alias{RSKC.trimkmeans.missing}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Robust Sparse K-means}
 \description{
@@ -144,9 +146,9 @@ Yumi Kondo <y.kondo@stat.ubc.ca>
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
+%%\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%%}
 \examples{
 # little simulation function 
 sim <-

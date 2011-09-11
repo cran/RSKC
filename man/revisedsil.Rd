@@ -11,35 +11,37 @@ a matrix containing the weighted squared Euclidean distances between cases and e
 Missing values are adjusted.
 }
 
+
+
 \usage{
-revisedsil(d,W,C,out=NULL,CASEofINT=out,col1="black",CASEofINT2=NULL,col2="red",print.plot=TRUE)
+revisedsil(d,reRSKC=NULL,CASEofINT=NULL,col1="black",CASEofINT2 = NULL, col2="red", print.plot=TRUE, W=NULL,C=NULL,out=NULL)
 }
 
 \arguments{
+
 
 \item{d}{
 A numerical data matrix, \code{N} by \code{p}, where \code{N} is the number of cases and \code{p} is the number of features.
 }
 
-\item{W}{
-A positive real vector of weights of length \code{p}.
+
+\item{reRSKC}{
+ A list output from RSKC function.
 }
 
-\item{C}{
-An integer vector of class labels of length \code{N}.
-}
-\item{out}{
-Vector of the case indices that should be excluded in the calculation of cluster centers.
-In \code{RSKC}, cluster centers are calculated without the cases that have the furthest 100*\code{alpha} \% Weighted squared Euclidean distances to their closest cluster centers.
-If one wants to obtain the cluster centers from \code{RSKC} output, set \code{out} = \code{<RSKCoutput>$oW}. 
-}
+
+
 \item{CASEofINT}{
+Necessary if print.plot=TRUE.
 A vector of the case indices that appear in the revised silhouette plot. 
-The revised silhouette widths of these indices are colored in \code{col1}.
+The revised silhouette widths of these indices are colored in \code{col1} if \code{CASEofINT != NULL}.
+The average silhouette of each cluster printed in the plot is computed EXCLUDING these cases.
 }
+
 \item{col1}{
 See \code{CASEofINT}.
 }
+
 \item{CASEofINT2}{
 A vector of the case indices that appear in the revised silhouette plot.
 The indices are colored in \code{col2}.
@@ -48,9 +50,26 @@ The indices are colored in \code{col2}.
 \item{col2}{
 See \code{CASEofINT2}
 }
+
 \item{print.plot}{
 If \code{TRUE}, the revised silhouette is plotted.
 }
+
+\item{W}{
+Necessary if \code{reRSKC = NULL}. A positive real vector of weights of length \code{p}.
+}
+
+\item{C}{
+Necessary if \code{reRSKC = NULL}.  An integer vector of class labels of length \code{N}.
+}
+
+\item{out}{
+Necessary if \code{reRSKC = NULL}. 
+Vector of the case indices that should be excluded in the calculation of cluster centers.
+In \code{RSKC}, cluster centers are calculated without the cases that have the furthest 100*\code{alpha} \% Weighted squared Euclidean distances to their closest cluster centers.
+If one wants to obtain the cluster centers from \code{RSKC} output, set \code{out} = \code{<RSKCoutput>$oW}. 
+}
+
 
 }
 
@@ -78,23 +97,24 @@ The corresponding case index are in \code{obs.i}
 }
 
 
-\details{
+%\details{
 %%  ~~ If necessary, more details than the description above ~~
-}
+%}
 
 
 \author{
 Yumi Kondo <y.kondo@stat.ubc.ca>
 }
-\note{
+
+%\note{
 %%  ~~further notes~~
-}
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
+%\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%}
 \references{
 Yumi Kondo (2011), Robustificaiton of the sparse K-means clustering algorithm, MSc. Thesis, University of British Columbia
 \url{http://hdl.handle.net/2429/37093}
@@ -119,7 +139,7 @@ d<-sim(2,p)
 # run RSKC
 re<-RSKC(d,ncl,L1=2,alpha=0.05)
 # cluster centers in weighted squared Euclidean distances by function sil
-sil.mu<-revisedsil(d,re$weights,re$labels,out=re$oW,print.plot=FALSE)$trans.mu
+sil.mu<-revisedsil(d,W=re$weights,C=re$labels,out=re$oW,print.plot=FALSE)$trans.mu
 # calculation 
 trans.d<-sweep(d[,re$weights!=0],2,sqrt(re$weights[re$weights!=0]),FUN="*") 
 class<-re$labels;class[re$oW]<-ncl+1
@@ -135,7 +155,7 @@ p<-200;ncl<-3;N<-60
 d<-sim(2,p)
 # run RSKC
 re<-RSKC(d,ncl,L1=2,alpha=0.05)
-si<-revisedsil(d,re$weights,re$labels,out=re$oW,print.plot=FALSE)
+si<-revisedsil(d,W=re$weights,C=re$labels,out=re$oW,print.plot=FALSE)
 si.mu<-si$trans.mu
 si.wdisc<-si$WdisC
 trans.d<-sweep(d[,re$weights!=0],2,sqrt(re$weights[re$weights!=0]),FUN="*") 

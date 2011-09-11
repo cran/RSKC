@@ -1,5 +1,5 @@
 Clest <-
-function(d,maxK,alpha,B=10,B0=20,nstart=100,L1=12,beta=0.1,pca=TRUE,silent=FALSE){
+function(d,maxK,alpha,B=15,B0=5,nstart=1000,L1=6,beta=0.1,pca=TRUE,silent=FALSE){
         n.rskc<-(maxK-1)*(B0*1*(1+1)+B*(1+1))
 	cat("RSKC will be performed (maxK-1)*(B0*1*(1+1)+B*(1+1))=",n.rskc,"times\n")
         if (is.null(L1)){sparse<-FALSE} else{ sparse<-TRUE}
