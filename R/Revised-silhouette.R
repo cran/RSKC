@@ -11,14 +11,24 @@ revisedsil<-function(d,  ## N by P data matrix used in the clustering
                      out=NULL  ## outliers (trimmed in step (a)) are not used to compute the cluster centers
                      ){
 
+
   if (!is.null(reRSKC))
     {
       W <- reRSKC$weights
       C <- reRSKC$labels
       out <- reRSKC$oW
     }
-
   uniC <- sort(unique(C))
+  
+  if (!is.numeric(C))
+    {
+      newC <- rep(1,length(C))
+      for (i in 1 : length(uniC))
+        newC[C==uniC[i]] <- i
+      C <- newC
+    }
+  
+
   if (length(uniC)==2)
     { ## If the number of clusters is 2,
       ## switch the class labels if necessary so that 

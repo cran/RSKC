@@ -165,7 +165,9 @@ SEXP RSKC_trimkmeans(SEXP data_,
       while(wend)
   	{
 	  //Rprintf("\v\v\v itcounter %d \v\v\v",itcounter);
-	  
+	  R_CheckUserInterrupt(); 
+	  R_ProcessEvents();
+
   	  itcounter++;
   	  //Compute the distances between observations and the cluster centers 
   	  for (in=0; in < n;in++)
@@ -415,7 +417,8 @@ SEXP RSKC_trimkmeans_missing(SEXP data_,
       while(wend)
   	{
 	  //Rprintf("\v\v\v itcounter %d \v\v\v",itcounter);
-	  
+	  R_CheckUserInterrupt(); 
+	  R_ProcessEvents();
   	  itcounter++;
   	  //===Compute the distances between observations and the cluster centers 
 	  // This part of codes is DIFFERENT from non-missing codes.
@@ -439,6 +442,8 @@ SEXP RSKC_trimkmeans_missing(SEXP data_,
 		  if (scaleW == 0 ) 
 		    {
 		      Rprintf("WARNINGs: Too many missing values.. Try larger L1 value!!");
+		      R_FlushConsole(); 
+		      R_ProcessEvents();
 		    }
 		  iWdisC[ik] *= Wsum/scaleW;
 		  //Rprintf(" %f",iWdisC[ik]);

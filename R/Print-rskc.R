@@ -40,8 +40,9 @@ summary.rskc<-function(object,...){
 	
 print.rskc<-function(x,...){
     sizeV<-NULL;C<-x$labels;n<-x$N;ncl<-x$ncl
+    uniC <- unique(C)
     for ( i in 1 : ncl){
-		sizeV[i]<-sum(C==i)
+		sizeV[i]<-sum(C==uniC[i])
 		}
     if (is.null(x$L1)){sparse<-FALSE; x$L1="NULL"}else{ sparse<-TRUE}
     if (is.character(x$oW)) x$oW<-NULL

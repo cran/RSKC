@@ -75,7 +75,7 @@ showDigit <- function(index,cex.main=1)
 ## sensitivity the other way around for the first example
 ## sensitivity for the second example both way
 
-condProb <- function (label1, label2
+Sensitivity <- function (label1, label2
                          ##, Alpha=FALSE, which.Alpha="label1"
                          )
   {
@@ -126,6 +126,6 @@ condProb <- function (label1, label2
     re <- data.frame(rbind(senst, correspondClass))
     
     names(re) <- uni2
-    rownames(re) <- c("Conditional prob. (%)", "Class label by label1.")
+    rownames(re) <- c("Sensitivity. (%)", "Class label by label1.")
     return(list(prob=re,table=tbl,marginal=prMat))
   }

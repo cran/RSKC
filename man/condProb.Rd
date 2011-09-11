@@ -1,11 +1,11 @@
-\name{condProb}
-\alias{condProb}
+\name{Sensitivity}
+\alias{Sensitivity}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Compute the sensitivities (probability of true positive) of each cluster
 }
 \description{
-The conditional probability of the correct classification of cluster \emph{k} is calculated as follows:
+The sensitivity or conditional probability of the correct classification of cluster \emph{k} is calculated as follows:
 %
 First, the proportions of observations whose true cluster label is \emph{k}
 are computed for each classified clusters.
@@ -18,7 +18,7 @@ returned by the algorithms.
 }
 
 \usage{
-condProb(label1, label2)
+Sensitivity(label1, label2)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -46,7 +46,7 @@ Yumi Kondo <y.kondo@stat.ubc.ca>
 \examples{
 vec1<-c(1,1,1,2,3,3,3,2,2)
 vec2<-c(3,3,3,1,1,2,2,1,1)
-condProb(vec1,vec2)
+Sensitivity(vec1,vec2)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
