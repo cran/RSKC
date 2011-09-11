@@ -1,14 +1,20 @@
 RSKC <-
-  function(d,ncl,alpha,L1=12,nstart=20,silent=TRUE,scaling=FALSE,correlation = FALSE){
+  function(d,ncl,alpha,L1=12,nstart=200,silent=TRUE,scaling=FALSE,correlation = FALSE){
     if (alpha > 1 | alpha < 0) stop("alpha must be between 0 and 1")
     if (!is.null(L1)) if (L1<1) stop("L1 value must be greater or equal to 1 or NULL!")
+    if (is.data.frame(d)) d <- as.matrix(d)
+    r.ncl <- round(ncl)
+    if (ncl != r.ncl) ncl <- r.ncl
+
+    if (ncl <= 1) stop("ncl must be positive integer > 1! but ncl=",ncl)
+
     if (scaling) d=scale(d)
     if (correlation) d = t(scale(t(d)))
     if (is.null(L1)) sparse<-FALSE else{ sparse<-TRUE}
     n<-nrow(d);Nout<-floor(n*alpha)
     f<-ncol(d);g<-f+1
     W<-rep(1,f);sumW<-f # for non-sparse 
-    if( sum(is.na(d))==0 )
+    if( sum(is.na(d))==0 ) ## is.na(d) == TRUE if d is na or d is nan
       {
         
         miss<-FALSE
@@ -24,7 +30,7 @@ RSKC <-
         }
         
       }else{
-        
+        d[is.nan(d) ] <- NA
         miss<-TRUE
         if (sparse){
           Result<-RSKC.a1.a2.b.missing(d,L1,ncl,nstart,alpha,n,f,g,Nout,silent)

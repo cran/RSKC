@@ -9,7 +9,7 @@ RSKC.a1.a2.b <-
   WBSS<-rep(NA,iteration)
   W<-rep(1/sqrt(f),f)
   for (i in 1:iteration){	
-                                        # Step a
+    ## Step a
     w.data<-t(t(d[,W!=0,drop=FALSE])*sqrt(W[W!=0])) # reduce the dimention so that the alg is more efficient
     reduced.f<-sum(W!=0)
 
@@ -17,7 +17,11 @@ RSKC.a1.a2.b <-
     A1<-RSKC.trimkmeans(w.data,ncl,trim=alpha,runs=nstart,points=Inf,maxit=10000)
     
     ## if (Nout!=0){out.a1<-which(A1$classification==(ncl+1))}else{out.a1<-n+1} ## modi Dec 29
-    if (Nout!=0){out.a1<-A1$oW }else{out.a1<-n+1}
+    if (Nout!=0){
+      out.a1<-A1$oW
+    }else{
+      out.a1<-n+1
+    }
     
     if (i!=1&oldss!=-Inf){
       Ab4<-RSKC.trimkmeans(w.data,ncl,trim=alpha,runs=1,
@@ -48,7 +52,7 @@ RSKC.a1.a2.b <-
     if (Nout==0){
       out.a2<-n+1 # skip (a-2) jump to (b)
     }else{
-                                        # Step a-2 (trimming)
+      ## Step a-2 (trimming)
       out.a2<-RSKC.step.a2(d,new.C,ncl,Nout,n,f,now.mu)
       n00<-n-length(union(out.a1,out.a2));
     }

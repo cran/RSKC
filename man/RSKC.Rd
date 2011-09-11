@@ -8,7 +8,8 @@
 The robust sparse \emph{K}-means clustering method by Kondo (2011). In this algorithm, sparse \emph{K}-means (Witten and Tibshirani (2010)) is robustified by iteratively trimming the prespecified proportion of cases in the weighted squared Euclidean distances and the squared Euclidean distances.
 }
 \usage{
-RSKC(d, ncl, alpha, L1 = 12, nstart = 20, silent=TRUE, scaling = FALSE, correlation = FALSE)
+RSKC(d, ncl, alpha, L1 = 12, nstart = 200, 
+silent=TRUE, scaling = FALSE, correlation = FALSE)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -170,7 +171,9 @@ for ( i in 1 : 10){
 # The generated dataset looks like this...
 pairs(
       d[,c(1,2,3,200)],col=true, 
-      labels=c("clustering feature 1","clustering feature 2","clustering feature 3","noise feature1"),
+      labels=c("clustering feature 1",
+      "clustering feature 2","clustering feature 3",
+      "noise feature1"),
       main="The sampling distribution of 60 cases colored by true cluster labels", 
       lower.panel=NULL) 
 

@@ -14,7 +14,9 @@ Missing values are adjusted.
 
 
 \usage{
-revisedsil(d,reRSKC=NULL,CASEofINT=NULL,col1="black",CASEofINT2 = NULL, col2="red", print.plot=TRUE, W=NULL,C=NULL,out=NULL)
+revisedsil(d,reRSKC=NULL,CASEofINT=NULL,col1="black",
+	CASEofINT2 = NULL, col2="red", print.plot=TRUE, 
+	W=NULL,C=NULL,out=NULL)
 }
 
 \arguments{

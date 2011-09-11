@@ -14,11 +14,16 @@ RSKC.a1.a2.b.missing <- function(d,L,ncl,nstart,alpha,n,f,g=f+1,Nout,silent=TRUE
     w.data<-t(t(d[,W!=0,drop=FALSE])*sqrt(reduced.W)) # reduce the dimention so that the alg is more efficient
     reduced.f<-sum(W!=0)
 
-    A1<-RSKC.trimkmeans.missing(d=w.data,ncl=ncl,w=reduced.W,trim=alpha,runs=nstart,points=Inf,maxit=10000)
+    A1 <- RSKC.trimkmeans.missing(d=w.data,ncl=ncl,w=reduced.W,trim=alpha,runs=nstart,points=Inf,maxit=10000)
 
     ## if (Nout!=0){out.a1<-which(A1$classification==(ncl+1))}else{out.a1<-n+1} ## modi Jan 1
-    if (Nout!=0){out.a1<-A1$oW }else{out.a1<-n+1}
-    
+    if (Nout!=0){
+      out.a1<-A1$oW
+    }else{
+      out.a1<-n+1
+    }
+
+    ##cat("\n\n out.a1 ",out.a1,"length",length(out.a1))
     if (i!=1&oldss!=-Inf)
       {
         Ab4<-RSKC.trimkmeans.missing(d=w.data,ncl=ncl,w=reduced.W,trim=alpha,runs=1,

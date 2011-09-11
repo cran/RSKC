@@ -1,15 +1,41 @@
 CER <-
-function(ind, true.ind,nob=length(ind)){
-	return(sum(abs(one(true.ind)-one(ind)))/choose(nob,2))}
+  function(ind, true.ind,nob=length(ind))
+{
+  if (length(ind) != length(true.ind))
+    stop("length(ind) != length(true.ind)",length(ind) ,"!=", length(true.ind))
+  ind.num <- ind
+  true.ind.num <- true.ind
+  if (is.character(ind)){
+    uniInd <- unique(ind)
+    for (i in 1 : length(uniInd))
+      {
+        ind.num[ind == uniInd[i]] <- i
+      }
+  }
 
-one <-
-function(index){
-	on<-NULL 
-	c<-combn(index,2)
-	c<-t(c)
-	on<-1*(c[,1]==c[,2])
-	return(on)
-	}
+  if (is.character(true.ind) ){
+    uniInd <- unique(true.ind)
+    for (i in 1 : length(uniInd))
+      {
+        true.ind.num[true.ind == uniInd[i]] <- i
+      }
+    
+  }
+
+  rand <- randIndex(as.numeric(ind.num),as.numeric(true.ind.num),correct=FALSE)
+  names(rand) <- NULL
+  return(1 - rand)
+  ##return(sum(abs(one(true.ind)-one(ind)))/choose(nob,2))
+}
+
+## one <-
+## function(index){
+## 	on <- NULL 
+## 	c <- combn(index,2)
+## 	c <- t(c)
+## 	on <- 1*(c[,1]==c[,2])
+## 	return(on)
+## 	}
 
 norm1 <-
 function(y){sum(abs(y))}

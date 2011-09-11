@@ -54,7 +54,7 @@ void realmin(const double iWdisC[],const int k, int *icls, double*themin)
 {
   // outputs 
   // icls: the position of the vector contiWdisCing the min
-  // the min: the min value
+  // the min: the minimum distance between this obs to the cluster k
   
   *icls=0;
   *themin=iWdisC[0];
@@ -126,7 +126,10 @@ SEXP RSKC_trimkmeans(SEXP data_,
   double disttom[n],means[k][p], iWdisC[k],optmeans[k*p];
   // double optdisttom[n];
   
+  // The initialization of oldclass0
+  for (in =0; in <n; in++) oldclass0[in]=R_PosInf;
   GetRNGstate();
+
 
   for (int irun = 0 ; irun < runs ; irun ++)
     {
@@ -264,6 +267,7 @@ SEXP RSKC_trimkmeans(SEXP data_,
   	  } // if else(itcounter >= maxit || identical(oldclass0,iclass0))
   	} // while(wend)
       // check if this run with this starting point returns smaller within cluster sum of square
+      //Rprintf("\n irun %d itcounter %d",irun,itcounter);
       newcrit = 0.0;
       for (in = 0 ; in < nin;in ++)
   	{
@@ -338,6 +342,10 @@ SEXP RSKC_trimkmeans(SEXP data_,
 
 
 
+
+
+
+
 SEXP RSKC_trimkmeans_missing(SEXP data_,
 			     SEXP n_,
 			     SEXP p_,
@@ -374,6 +382,9 @@ SEXP RSKC_trimkmeans_missing(SEXP data_,
   // double optdisttom[n];
   
   GetRNGstate();
+
+  // The initialization of oldclass0
+  for (in =0; in <n; in++) oldclass0[in]=R_PosInf;
 
   // sum(Ws) does not change in this code, so we compute it at first
   double Wsum=0;

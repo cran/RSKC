@@ -1,4 +1,5 @@
 
+
 RSKC.trimkmeans <-function(d,ncl,trim,runs=1,points=Inf,maxit=nrow(as.matrix(d))*2)
   {
     ## points must be either Inf (i.e., no specification) or k by p matrix where each row represents
@@ -47,6 +48,8 @@ RSKC.trimkmeans.missing <-function(d,ncl,w=rep(1,nrow(d)),trim=0.1,runs=1,points
     n <- nrow(d)
     p <- ncol(d)
     nin <- ceiling((1-trim)*n)
+
+    ##cat("\n\n nin",nin)
     ## If the starting point is initialized, trimmed k-means run only once
     if (sum(is.finite(points)) > 0) nstart <- 1
     
@@ -77,6 +80,10 @@ RSKC.trimkmeans.missing <-function(d,ncl,w=rep(1,nrow(d)),trim=0.1,runs=1,points
     re$labels <- re$labels + 1
     re$classification <- re$classification + 1
     re$classification[re$classification==0] <- ncl + 1
+
+    ## cat("\n\n re$classification",re$classification,"length",length(re$classification))
+    ## cat("\n\n re$oW",re$oW,"length",length(re$oW))
+    
     return (re)
   }
 
