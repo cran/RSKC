@@ -71,21 +71,61 @@ showDigit <- function(index,cex.main=1)
   }
 
 
+      
+## sensitivity the other way around for the first example
+## sensitivity for the second example both way
 
-Sensitivity <- function(L,trueL)
-  { 
-   unitrueL<- unique(trueL)
-   K <- length(unitrueL)
-   senst <- correspondClass <- rep(NA,K)
-   tbl <- table(L,trueL)
-   ## The true number of observations in each clusters
-   trueTot<- colSums(tbl)
-   prMat <- scale(tbl,scale=trueTot,center=FALSE)
-   senst <- apply(prMat,2,max)*100
-   correspondClass <-  apply(prMat,2,which.max)
+condProb <- function (label1, label2
+                         ##, Alpha=FALSE, which.Alpha="label1"
+                         )
+  {
+    ## Given two partitions, label1 and label2, compute its "sensitivity"
+    ## max{ (label1[label2==k])/sum(label2==k) }, and the corresponding label of label1 that achieves max 
+    uni1 <- sort(unique(label1))
+    uni2 <- sort(unique(label2))
 
-   re <- rbind(senst,correspondClass)
-   colnames(re) <- unitrueL
-   rownames(re) <- c("Sensitivity (%)","Class label by alg.")
-   return(re)
- }
+    ## if (length(uni1) >= 27 & Alpha & which.Alpha=="label1")
+    ##   stop("The alphabet option is valid only if the number of clusters from label1 is less than 27")
+    ## if (length(uni2) >= 27 & Alpha & which.Alpha=="label2")
+    ##   stop("The alphabet option is valid only if the number of clusters from label2 is less than 27")
+    
+    ## ## change the labels of clusters in which.Alpha
+    ## if (Alpha & which.Alpha=="label1"){
+    ##   temp <- label1
+    ##   for (iuniL in 1 : length(uni1))
+    ##     {
+    ##       temp[label1==uni1[iuniL]] <- letters[iuniL]
+    ##     }
+    ##   label1 <- temp
+    ##   uni1 <- sort(unique(label1))
+      
+    ## }else if (Alpha & which.Alpha=="label2"){
+    ##   temp <- label2
+    ##   for (iuniL in 1 : length(uni1))
+    ##     {
+    ##       temp[label2==uni2[iuniL]] <- letters[iuniL]
+    ##     }
+    ##   label2 <- temp
+    ##   uni2 <- sort(unique(label2))
+    ## }
+    
+    K <- length(uni2)
+    senst <- correspondClass <- rep(NA, K)
+    ## this will return table both columns and rows are in sorted order.
+    tbl <- table(label1, label2)
+    
+    trueTot <- colSums(tbl)
+    ## scale each column of the table matrix by its column sum
+    ##  colSums(prMat)= 1,1,...
+    prMat <- scale(tbl, scale = trueTot, center = FALSE)
+    senst <- apply(prMat, 2, max)*100
+
+    correspondClass <- rownames(prMat)[apply(prMat, 2, which.max)]
+    senst <- sprintf("%1.0f",senst)
+    
+    re <- data.frame(rbind(senst, correspondClass))
+    
+    names(re) <- uni2
+    rownames(re) <- c("Conditional prob. (%)", "Class label by label1.")
+    return(list(prob=re,table=tbl,marginal=prMat))
+  }

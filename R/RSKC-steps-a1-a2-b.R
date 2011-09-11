@@ -72,7 +72,7 @@ RSKC.a1.a2.b <-
     oldss <- newss
     W<-B$We;WBSS[i]<-B$WBSS
   }
-  
+  if (i == iteration) cat("Step (a), (a2) and (b) are repeated over the maximum number of iterations. The algorithm might not converge.")
   return(list(centers=now.mu,oE=save.out.a2,oW=save.out.a1,labels=C,weights=W,WBSS=WBSS[1:(i-1)]))
 }
 

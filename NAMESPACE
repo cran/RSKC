@@ -1,2 +1,2 @@
 export(Clest,CER,print.rskc,print.summary.rskc,summary.rskc,revisedsil,
-       RSKC,RSKC.trimkmeans,RSKC.trimkmeans.missing,showbitmap,Sensitivity,showDigit)
+       RSKC,RSKC.trimkmeans,RSKC.trimkmeans.missing,showbitmap,condProb,showDigit)
