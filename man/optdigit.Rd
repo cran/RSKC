@@ -36,7 +36,7 @@ The original dataset is freely available from USIMachine Learning Repository (Fr
 }
 
 \references{
-Frank A, Asuncion A (2010). UCI Machine Learning Repository." \url{http://archive.ics.uci.edu/ml.}
+Frank A, Asuncion A (2010). UCI Machine Learning Repository." \url{http://archive.ics.uci.edu/ml}.
 }
 \author{
 Yumi Kondo <y.kondo@stat.ubc.ca>

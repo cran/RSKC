@@ -1,6 +1,6 @@
-889d35ecfff620aa2bbfd7289e303766 *DESCRIPTION
-945ba68389dcc1a36cb66c84ad2c3cf1 *NAMESPACE
-88165b7cbca2533e4fc0bf72f89b79fa *R/CER.R
+e716b558181b5dc1d2e714d6d8500828 *DESCRIPTION
+a1652addc299c659cebef9e8dd53b4dd *NAMESPACE
+9a36504d699973ec3746cce44e27a08e *R/CER.R
 54020dd3df0028574c811b77e484225e *R/Clest-base.R
 b6a9dc749775aa95a008da4d05ed2a51 *R/Clest.R
 5b5f2c676bc97aa0026982772bd27c0c *R/Print-rskc.R
@@ -18,13 +18,14 @@ b10bcf890a46b26bfb1319ee69217705 *R/zzz.R
 a8d15a5504ee3bb5410f49c85319acce *data/bitmapMat.rda
 97a8a66cc93df11c114bd9653b226843 *data/optd.rda
 1baf348dbc5926760a7a83c6332ac310 *data/rawDBWorld.rda
+e0dec9895d7ae88945a8cc49a93c5aa0 *inst/CITATION
 ad404d954fd771fe4fdfa2dca24ac16c *man/CER.Rd
 3821828c02d5fad7ddb8ef8ac9ef5029 *man/Clest.Rd
 f6a561a85f17076abdd45e5a703b9a2d *man/DBWorld.Rd
 c9838d550bd7d8a3c51d88ed665ee444 *man/RSKC-internal.Rd
-2af41f1c18ea8451819bd3b14b170fde *man/RSKC.Rd
+ef9f0d7ade9dc5e9509b3ea8f15808ed *man/RSKC.Rd
 106b535a32e0989200a10b79fcdb685d *man/condProb.Rd
-421012f8da74a9d7d5eec17340809949 *man/mfeat.Rd
-c245bffaeef2c8f10a8695f68df1d4b7 *man/optdigit.Rd
+94c3938e3dcfe0265ec720be855196df *man/mfeat.Rd
+b72546fa13e1cb1e4b8356389512ddaf *man/optdigit.Rd
 8ae5e846eedb223782812aaf78120ad4 *man/revisedsil.Rd
 a4ee0c9649fda2adf0cf19f1fbe4f1e6 *src/RSKC_trimkmeans.c

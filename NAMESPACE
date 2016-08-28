@@ -1,4 +1,12 @@
 import(flexclust)
+importFrom("grDevices", "gray.colors")
+importFrom("graphics", "abline", "axis", "polygon", "text")
+importFrom("stats", "median", "runif", "var")
+importFrom("utils", "data")
 
 export(Clest,CER,print.rskc,print.summary.rskc,summary.rskc,revisedsil,
        RSKC,RSKC.trimkmeans,RSKC.trimkmeans.missing,showbitmap,Sensitivity,showDigit)
+
+S3method(print,rskc)
+S3method(print,summary.rskc) 
+S3method(summary,rskc)

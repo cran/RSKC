@@ -47,9 +47,11 @@ function(y){sqrt(sum(y^2))}
 ## function specific for the opt digits
 ## generate bitmap of given observation
 showbitmap <-function(index)
-  {
-    ## data(bitmapMat) ## lazyloading
-    ## data(bitmapLab) ## lazyloading
+    {
+        bitmapMat = NULL## This line is to avoid the complain about No visible binding from R CMD CHECK 
+        bitmapLab = NULL## This line is to avoid the complain about No visible binding from R CMD CHECK
+    data(bitmapMat,envir = environment()) ## lazyloading
+    data(bitmapLab,envir = environment()) ## lazyloading
     Nbit=32
     for (iindex in 1 : length(index))
       {
@@ -67,8 +69,9 @@ showbitmap <-function(index)
 ## function declaration
 
 showDigit <- function(index,cex.main=1)
-  {
-    ## data(DutchUtility) ## lazyloading
+    {
+    DutchUtility = NULL## This line is to avoid the complain about No visible binding from R CMD CHECK
+    data(DutchUtility,envir = environment()) ## lazyloading
     ## 4. DutchUtility-pix: 240 pixel averages in 2 x 3 windows; 
     ## 16 by 15
     ncols = 15 ## replace to 15 

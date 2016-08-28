@@ -127,6 +127,8 @@ For the calculation of cluster centers in the weighted distances, see \code{revi
 }
 
 \references{
+Y. Kondo, M. Salibian-Barrera, R.H. Zamar. RSKC: An R Package for a Robust and Sparse K-Means Clustering Algorithm.,Journal of Statistical Software, 72(5), 1-26, 2016.
+	
 A. Gordaliza. Best approximations to random variables based on trimming procedures. Journal of Approximation Theory, 64, 1991a.
  
 A. Gordaliza. On the breakdown point of multivariate location estimators based on trimming procedures. Statistics & Probability Letters, 11, 1991b. 

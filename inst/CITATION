@@ -1,0 +1,24 @@
+bibentry(bibtype = "Article",
+  title        = "{RSKC}: An {R} Package for a Robust and Sparse K-Means Clustering Algorithm",
+  author       = c(person(given = "Yumi",
+                          family = "Kondo",
+                          email = "y.kondo@stat.ubc.ca"),
+                   person(given = "Matias",
+                          family = "Salibian-Barrera"),
+                   person(given = "Ruben",
+                          family = "Zamar")),
+  journal      = "Journal of Statistical Software",
+  year         = "2016",
+  volume       = "72",
+  number       = "5",
+  pages        = "1--26",
+  doi          = "10.18637/jss.v072.i05",
+
+  header       = "To cite RSKC in publications use:",
+  textVersion  =
+  paste("Yumi Kondo, Matias Salibian-Barrera, Ruben Zamar (2016).",
+        "RSKC: An R Package for a Robust and Sparse K-Means Clustering Algorithm.",
+        "Journal of Statistical Software, 72(5), 1-26.",
+        "doi:10.18637/jss.v072.i05")
+)
+
